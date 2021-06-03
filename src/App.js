@@ -31,8 +31,8 @@ export default function App() {
           }
         }
         let newLabels = {};
-        newPaises.forEach(moeda => { 
-          newLabels[moeda.id] = moeda.currencyName;//criar json no formato sigla do país: nome da moeda, exemplo: BR: Brazilian real
+        newPaises.forEach(pais => { 
+          newLabels[pais.id] = pais.currencyName;//criar json no formato sigla do país: nome da moeda, exemplo: BR: Brazilian real
         });
 
         setLabels(newLabels); 
@@ -61,8 +61,8 @@ export default function App() {
   }, [valor, moeda, moedaDestino]);
 
   function handleSelectDest(code){ //seta valor para moeda destino
-    let element = paises.find(moeda =>{
-      return moeda.id === code
+    let element = paises.find(pais =>{
+      return pais.id === code
     });
 
     setMoedaDestino(element.currencyId);
@@ -70,8 +70,8 @@ export default function App() {
   }
 
   function handleSelect(code){// seta valor para moeda de origem
-    let element = paises.find(moeda =>{
-      return moeda.id === code
+    let element = paises.find(pais =>{
+      return pais.id === code
     });
 
     setMoeda(element.currencyId);
@@ -116,7 +116,7 @@ export default function App() {
                 placeholder="Selecione uma moeda"
                 selected={selected}
                 onSelect={code => handleSelect(code)}
-                countries={paises.map(moeda => { return moeda.id})}
+                countries={paises.map(pais => { return pais.id})}
                 customLabels={labels}
                 searchable
                 className="bg-white"
@@ -139,7 +139,7 @@ export default function App() {
                 placeholder="Selecione uma moeda"
                 selected={selectedDest}
                 onSelect={code => handleSelectDest(code)}
-                countries={paises.map(moeda => { return moeda.id})}
+                countries={paises.map(pais => { return pais.id})}
                 customLabels={labels}
                 searchable
                 className="bg-white"
